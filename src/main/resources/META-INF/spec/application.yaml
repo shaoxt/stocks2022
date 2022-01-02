@@ -1,0 +1,22 @@
+apiVersion: coin/v1
+kind: Component
+metadata:
+  namespace: stocks
+  name: helloworld
+spec:
+  class: shao.sheldon.implement.StockFetcherImpl
+  response: 您好！世界！
+
+---
+apiVersion: coin/v1
+kind: Cron
+metadata:
+  namespace: stocks
+  name: helloworld-cron
+spec:
+  componentName: helloworld
+  componentType: action
+  action: fetch
+  second: 60/10
+  arguments:
+    1: CronSample
